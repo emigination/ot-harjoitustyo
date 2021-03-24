@@ -2,7 +2,7 @@
 
 Leipäteksti *kursivoitu* **lihavoitu**.
 
-##Viikko 1
+## Viikko 1
 
 [gitlog.txt](https://github.com/emigination/ot-harjoitustyo/blob/main/laskarit/gitlog.txt)
 
