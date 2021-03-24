@@ -1,0 +1,104 @@
+commit 831ea7d1819aedd28baeeb45a92416d288c7a946
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Wed Mar 24 14:47:26 2021 +0200
+
+    poistettu file1, uudelleennimetty file2 -> file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 4e5814b6a2bb0b1c59119bf4f515bca8ee33e2b3
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Wed Mar 24 14:43:55 2021 +0200
+
+    lisätty file1-3
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit d3d8f1c04198c2e81726ce7e2a772cc2261165aa
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Tue Mar 23 21:57:15 2021 +0200
+
+    muokattu ekaa ja kolmatta
+
+ kolmas.txt   |  2 +-
+ tiedosto.txt | 10 ----------
+ 2 files changed, 1 insertion(+), 11 deletions(-)
+
+commit 723ec2018d7a531edc5717aaa8778ec5d8ddccae
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Tue Mar 23 21:53:56 2021 +0200
+
+    toinen.txt poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 681ea8c7dc63c4c8e6aa9fdf1788a0906c1ec883
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Tue Mar 23 21:49:51 2021 +0200
+
+    tekstiä poistettu ja lisätty
+
+ tiedosto.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 08f1a28bb41e660f9fe134e45e609af25002cf1b
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Tue Mar 23 21:48:21 2021 +0200
+
+    tekstiä lisätty
+
+ tiedosto.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+commit 38d1a11c06f85de0d21ca3d4af746c7dfd565301
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Mon Mar 22 20:58:10 2021 +0200
+
+    stuff ja jokin.txt luotu
+
+ stuff/jokin.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 6126587598b1c9ae9eb25b2218ba5b7f6f81219b
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Mon Mar 22 20:55:18 2021 +0200
+
+    muokattu toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit a430fadc65eb94db2f509959dc9227b0d67a3fb9
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Mon Mar 22 20:52:42 2021 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 2be83db4edef8b4cf8d54979f23fff2a8eb400fe
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Mon Mar 22 20:49:09 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit bc9ca31070f679fef56fc4c8685b0a1f53e69eef
+Author: Emilia Andersson <emilia.andersson@helsinki.fi>
+Date:   Mon Mar 22 20:46:52 2021 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
