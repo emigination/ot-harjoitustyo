@@ -8,4 +8,4 @@
 
 ## Viikko 2
 
-[Vaatimusmäärittely](https://github.com/mluukkai/OtmTodoApp/blob/master/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/emigination/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
