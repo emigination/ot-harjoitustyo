@@ -10,13 +10,13 @@ class UI:
     def start(self):
         title = ttk.Label(master=self._frame, text="Äänten lasku sovellus\n")
         instructions = ttk.Label(master=self._frame, text="\nKirjaa ehdokkaiden numerot\n")
-        countbutton = ttk.Button(master=self._root, text="Laske")
         candidatesLabel = ttk.Label(master=self._frame, text="Ehdokkaiden määrä:")
         votersLabel = ttk.Label(master=self._frame, text="Äänestäjien määrä:")
         candidatesEntry=ttk.Entry(master=self._frame)
         votersEntry=ttk.Entry(master=self._frame)
         okbutton = ttk.Button(master=self._frame, text="Ok", command=lambda: self._okButtonClick(candidatesEntry.get(), votersEntry.get()))
         self.tbl = votesTable(self._root)
+        countbutton = ttk.Button(master=self._root, text="Laske", command=self.tbl.countClick())
 
         title.grid(row=0, column=1)
 

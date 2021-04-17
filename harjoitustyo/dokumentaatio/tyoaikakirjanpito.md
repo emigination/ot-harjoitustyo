@@ -11,3 +11,5 @@
 14.4.: 2 h, graafisen käyttöliittymän luonti
 
 16.4.: 1,5 h, votesTable-luokan luonti
+
+17.4.: 4 h, toiminnallisuuden lisäämistä votesTableen

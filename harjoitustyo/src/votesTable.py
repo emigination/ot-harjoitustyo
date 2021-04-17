@@ -1,4 +1,5 @@
 from tkinter import ttk
+import csv
 
 class votesTable:
     def __init__(self, root):
@@ -53,3 +54,9 @@ class votesTable:
         self.voters+=v
         return(self)
 
+    def countClick(self):
+        table=[]
+        for i in range(self.voters):
+            table.append([])
+            for j in range(self.candidates):
+                table[i].append(self._frame.grid_slaves(row=i+1, column=j+1))
