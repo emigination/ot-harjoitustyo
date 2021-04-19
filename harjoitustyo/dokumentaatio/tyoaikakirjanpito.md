@@ -13,3 +13,7 @@
 16.4.: 1,5 h, votesTable-luokan luonti
 
 17.4.: 4 h, toiminnallisuuden lisäämistä votesTableen
+
+18.4.: 3 h, tulosnäkymän alustus
+
+19.4.: 6 h, näkymien kehitystä, Votes-luokan alustus, siirtoäänivaalimenetelmiin tutustumista

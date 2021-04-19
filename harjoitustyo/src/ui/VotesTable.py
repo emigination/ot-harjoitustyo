@@ -1,18 +1,18 @@
 from tkinter import ttk
-import csv
+from Votes import Votes
 
-class votesTable:
+class VotesTable:
     def __init__(self, root):
         self._root=root
         self._frame=ttk.Frame(master=self._root)
         self.candidates=0
         self.voters=0
-        self.expandTable(3,4)
+        self.expand_table(3,4)
 
-    def getFrame(self):
+    def get_frame(self):
         return(self._frame)
 
-    def expandTable(self,c,v):
+    def expand_table(self,c,v):
         c=int(c)-self.candidates
         v=int(v)-self.voters
         if c>0 and v>0:
@@ -54,9 +54,20 @@ class votesTable:
         self.voters+=v
         return(self)
 
-    def countClick(self):
-        table=[]
+    def count_click(self,seats):
+        votesList=[]
         for i in range(self.voters):
-            table.append([])
+            votesList.append([])
             for j in range(self.candidates):
-                table[i].append(self._frame.grid_slaves(row=i+1, column=j+1))
+                vote = self._frame.grid_slaves(row=i+1, column=j+1)[0].get()
+                if vote=='':
+                    vote='0'
+                if vote.isnumeric():
+                    votesList[i].append(int(vote))
+                else:
+                    errormsg=ttk.Label(master=self._frame, text="Virheellinen merkki syötetty")
+                    errormsg.grid()
+                    return False
+        votes = Votes(votesList,int(seats))
+        self._frame.destroy()
+        return votes
