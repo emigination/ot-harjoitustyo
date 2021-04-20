@@ -25,9 +25,6 @@ Testikattavuusraportti generoidaan komennolla:
 
 poetry run invoke coverage-report
 
-
-Raportti generoituu htmlcov-hakemistoon.
-
 ### Pylint
 Tiedoston .pylintrc määrittelemät tarkistukset suoritetaan komennolla:
 
