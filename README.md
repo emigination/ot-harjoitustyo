@@ -24,6 +24,8 @@ poetry run invoke test
 Testikattavuusraportti generoidaan komennolla:
 
 poetry run invoke coverage-report
+
+
 Raportti generoituu htmlcov-hakemistoon.
 
 ### Pylint
