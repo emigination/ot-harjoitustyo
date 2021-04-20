@@ -19,3 +19,5 @@
 19.4.: 6 h, näkymien kehitystä, Votes-luokan alustus, siirtoäänivaalimenetelmiin tutustumista
 
 20.4.: 7 h, toiminnallisuuden kehittäminen käytettävään kuntoon, järjestelyä ja siistimistä, testauksen alustus
+
+Yhteensä: 29,5 h
