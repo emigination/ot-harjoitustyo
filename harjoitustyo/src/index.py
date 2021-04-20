@@ -1,11 +1,12 @@
 from tkinter import Tk
-from ui.UI import UI
+from ui.ui import UI
+
 
 def main():
     window = Tk()
     window.title("Vaalituloslaskuri")
-    ui = UI(window)
-    ui.start()
+    gui = UI(window)
+    gui.start()
     window.mainloop()
 
 if __name__ == '__main__':

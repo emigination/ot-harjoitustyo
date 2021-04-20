@@ -10,9 +10,9 @@ Sovelluksessa ei ole eri käyttäjärooleja.
 
 ## Suunnitellut perustoiminnallisuudet ##
 
-* Käyttäjä voi syöttää annetut (paperi)äänet äänestäjä kerrallaan ja valittavien henkilöiden lukumäärän
+* Käyttäjä voi syöttää annetut (paperi)äänet äänestäjä kerrallaan ja valittavien henkilöiden lukumäärän -tehty
 * Käyttäjä voi myös tuoda äänet taulukkomuotoisesta tiedostosta
-* Sovellus kertoo valittavat henkilöt järjestyksessä
+* Sovellus kertoo valittavat henkilöt järjestyksessä -tehty
 * Äänet voi tallentaa paikallisesti
 
 ## Jatkokehitysajatukset ##
