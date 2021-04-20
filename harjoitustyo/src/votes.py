@@ -47,8 +47,7 @@ class Votes:
                 lst.append(candidates[int(vote)-1])
             ballots.append(Ballot(ranked_candidates=lst))
         election_result = pyrankvote.single_transferable_vote(
-            candidates,
-            ballots, self._seats,
+            candidates,ballots, self._seats,
             compare_method_if_equal=CompareMethodIfEqual.MostSecondChoiceVotes,
             pick_random_if_blank=False
         )

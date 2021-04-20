@@ -6,3 +6,4 @@
 /harjoitustyo/src/__pycache__/
 /.vscode/
 /harjoitustyo/.venv/
+/harjoitustyo/src/tests/__pycache__

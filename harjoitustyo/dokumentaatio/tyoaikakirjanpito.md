@@ -17,3 +17,5 @@
 18.4.: 3 h, tulosnäkymän alustus
 
 19.4.: 6 h, näkymien kehitystä, Votes-luokan alustus, siirtoäänivaalimenetelmiin tutustumista
+
+20.4.: 7 h, toiminnallisuuden kehittäminen käytettävään kuntoon, järjestelyä ja siistimistä, testauksen alustus
