@@ -3,9 +3,9 @@
 Sovelluksella voi laskea siirtoäänivaalien tuloksen.
 
 ## Dokumentaatio
-* [Vaatimusmäärittely](https://github.com/emigination/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
-* [Työaikakirjanpito](https://github.com/emigination/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
-* [Arkkitehtuuri](https://github.com/emigination/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+* [Vaatimusmäärittely](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/vaatimusmaarittely.md)
+* [Työaikakirjanpito](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/tyoaikakirjanpito.md)
+* [Arkkitehtuuri](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/arkkitehtuuri.md)
 
 
 ## Komentorivitoiminnot
@@ -24,7 +24,6 @@ poetry run invoke test
 Testikattavuusraportti generoidaan komennolla:
 
 poetry run invoke coverage-report
-Raportti generoituu htmlcov-hakemistoon.
 
 ### Pylint
 Tiedoston .pylintrc määrittelemät tarkistukset suoritetaan komennolla:
