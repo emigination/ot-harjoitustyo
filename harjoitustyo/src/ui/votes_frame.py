@@ -1,5 +1,5 @@
-from tkinter import ttk
-from votes import Votes
+from tkinter import ttk, StringVar
+from services.votes import Votes
 
 
 class VotesFrame:
@@ -8,7 +8,11 @@ class VotesFrame:
         self._frame = ttk.Frame(master=self._root)
         self._candidates = 0
         self._voters = 0
+        self._errormsg = StringVar()
+        self._errormsg.set("")
+        self._error_label = ttk.Label(master=self._frame,textvariable=self._errormsg, foreground='red')
         self.expand_table(3, 4)
+
 
     def get_frame(self):
         return self._frame
@@ -57,6 +61,7 @@ class VotesFrame:
 
         self._candidates += candidates
         self._voters += voters
+        self._error_label.grid()
         return self
 
     def count_click(self, seats):
@@ -66,11 +71,19 @@ class VotesFrame:
             for j in range(self._candidates):
                 vote = self._frame.grid_slaves(row=i+1, column=j+1)[0].get()
                 votes_list[i].append(vote)
+        if not seats.isnumeric() or int(seats)<=0:
+            self._errormsg="Valittavien määrä ei ole positiivinen kokonaisluku"
+            return False
+        if int(seats)>=self._candidates:
+            self._errormsg="Valittavien määrä on suurempi tai yhtä suuri kuin ehdokkaiden"
+            return False
         votes = Votes(votes_list, int(seats), self._candidates)
-        if not votes.check_validity():
-            errormsg = ttk.Label(master=self._frame,
-                                 text="Virheellinen merkki syötetty")
-            errormsg.grid()
+        errorslist=votes.check_validity()
+        if len(errorslist)>0:
+            errors=""
+            for error in errorslist:
+                errors=errors+error+'\n'
+            self._errormsg=errors
             return False
         self._frame.destroy()
         return votes

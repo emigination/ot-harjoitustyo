@@ -7,41 +7,71 @@ class Votes:
 
     def __init__(self, votes, seats, ncandidates):
         self._votes = votes
-        self._votes_list = []
         self._ncandidates = ncandidates
         self._seats = seats
 
-    def check_validity(self):
-        for i in range(len(self._votes)):
-            self._votes_list.append([])
-            for j in range(self._ncandidates):
-                vote = self._votes[i][j]
-                if vote == '':
-                    vote = '0'
-                if vote.isnumeric() and int(vote) >= 0 and int(vote) <= self._ncandidates:
-                    self._votes_list[i].append(vote)
+    def _check_correct_characters(self):
+        for vote in self._votes:
+            for choice in vote:
+                if choice=='':
+                    continue
+                if  choice.isnumeric() and int(choice)>=0:
+                    number=int(choice)
                 else:
-                    return False
-        return True
+                    self.errors.append("Syötetty valinta ei ole positiivinen kokonaisluku")
+                    return
+                if int(choice)>self._ncandidates:
+                    self.errors.append("Syötetty luku ei vastaa ketään ehdokasta")
+                    return
+
+    def _check_all_different(self):
+        for vote in self._votes:
+            numbers=set()
+            for number in vote:
+                if number=='':
+                    continue
+                if number in numbers:
+                    self.errors.append("Sama ehdokas kaksi kertaa yhdessä äänessä")
+                    return
+                numbers.add(number)
+
+    # def _check_seat_number(self):
+    #     if not self._seats.isnumeric() or int(self._seats)<=0:
+    #         self.errors.append("Valittavien määrä ei ole positiivinen kokonaisluku")
+    #         return
+    #     if int(self._seats)>self._ncandidates:
+    #         self.errors.append("Valittavien määrä on suurempi kuin ehdokkaiden")
+
+    def check_validity(self):
+        self.errors=[]
+        self._check_correct_characters()
+        self._check_all_different()
+        return self.errors
 
     def _remove_empty(self):
         empty = []
-        for i in range(len(self._votes_list)):
-            if max(self._votes_list[i]) == 0:
+        for i in range(len(self._votes)):
+            isEmpty=True
+            for choice in self._votes[i]:
+                if choice!='':
+                    isEmpty=False
+                    break
+            if isEmpty:
                 empty.append(i)
-        number = 0
+        number=0
         for i in empty:
-            self._votes_list.pop(i-number)
+            self._votes.pop(i-number)
             number += 1
 
     def stv_result(self):
+        self._remove_empty()
         candidates = []
         for i in range(self._ncandidates):
             candidates.append(Candidate(str(i+1)))
         ballots = []
-        for i in range(len(self._votes_list)):
+        for i in range(len(self._votes)):
             lst = []
-            for vote in self._votes_list[i]:
+            for vote in self._votes[i]:
                 if vote == '0':
                     continue
                 lst.append(candidates[int(vote)-1])

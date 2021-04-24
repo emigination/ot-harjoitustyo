@@ -7,3 +7,5 @@
 /.vscode/
 /harjoitustyo/.venv/
 /harjoitustyo/src/tests/__pycache__
+/harjoitustyo/htmlcov
+/harjoitustyo/.coverage
