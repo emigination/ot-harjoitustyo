@@ -5,7 +5,7 @@ from services.votes import Votes
 class TestVotes(unittest.TestCase):
 
     def test_remove_empty(self):
-        votelist=[['1','2'],['0','0'],['2','1']]
+        votelist=[['1','2'],['',''],['2','1']]
         votes=Votes(votelist,1,2)
         votes._remove_empty()
         self.assertEqual(votes._votes, [['1','2'],['2','1']])

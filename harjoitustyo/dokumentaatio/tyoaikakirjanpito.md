@@ -20,4 +20,10 @@
 
 20.4.: 7 h, toiminnallisuuden kehittäminen käytettävään kuntoon, järjestelyä ja siistimistä, testauksen alustus
 
-Yhteensä: 29,5 h
+21.4.: 1 h, testauksen kehittelyä
+
+24.4.: 4 h, lisätty syötettyjen arvon kelvollisuuden tarkistaminen ja virheilmoituksia, muutettu hieman rakennetta
+
+26.4.: 1,5 h
+
+Yhteensä: 36 h
