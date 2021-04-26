@@ -24,6 +24,6 @@
 
 24.4.: 4 h, lisätty syötettyjen arvon kelvollisuuden tarkistaminen ja virheilmoituksia, muutettu hieman rakennetta
 
-26.4.: 1,5 h
+26.4.: 2,5 h
 
-Yhteensä: 36 h
+Yhteensä: 37 h
