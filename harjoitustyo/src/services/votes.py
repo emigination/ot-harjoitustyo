@@ -9,6 +9,7 @@ class Votes:
         self._votes = votes
         self._ncandidates = ncandidates
         self._seats = seats
+        self._errors = []
 
     def _check_correct_characters(self):
         for vote in self._votes:
@@ -42,7 +43,6 @@ class Votes:
         if not self._seats.isnumeric() or int(self._seats) <= 0:
             self._errors.append(
                 "Valittavien määrä ei ole positiivinen kokonaisluku")
-            return
         elif int(self._seats) >= self._ncandidates:
             self._errors.append(
                 "Valittavien määrä on suurempi tai yhtä suuri kuin ehdokkaiden")
@@ -58,12 +58,12 @@ class Votes:
     def _remove_empty(self):
         empty = []
         for i in range(len(self._votes)):
-            isEmpty = True
+            is_empty = True
             for choice in self._votes[i]:
-                if choice != '' and choice != '0':
-                    isEmpty = False
+                if choice not in ('0', ''):
+                    is_empty = False
                     break
-            if isEmpty:
+            if is_empty:
                 empty.append(i)
         number = 0
         for i in empty:
@@ -79,9 +79,8 @@ class Votes:
         for i in range(len(self._votes)):
             lst = []
             for vote in self._votes[i]:
-                if vote == '0' or vote == '':
-                    continue
-                lst.append(candidates[int(vote)-1])
+                if vote not in ('0', ''):
+                    lst.append(candidates[int(vote)-1])
             ballots.append(Ballot(ranked_candidates=lst))
         election_result = pyrankvote.single_transferable_vote(
             candidates, ballots, int(self._seats),
@@ -89,24 +88,3 @@ class Votes:
             pick_random_if_blank=False
         )
         return election_result
-
-    #     elected=0
-    #     for i in range(self.seats):
-    #         self.ncandidates.append(Candidate())
-    #     self._remove_empty()
-    #     droopQuota=math.floor(len(self.votes_list)/(self.seats+1)+1)
-    #     for voter in self.votes_list:
-    #         vote=voter[0]
-    #         candidate=self.ncandidates[vote]
-    #         candidate.votes+=1
-    #         if candidate.votes>=droopQuota:
-    #             candidate.elected=True
-    #             elected+=1
-    #         while self.seats>elected:
-    #             for candidate in self.ncandidates:
-    #                 if candidate.selected:
-    #                     candidate.surplus=(candidate.votes-droopQuota)/candidate.votes
-    #             for i in range(self.ncandidates-1):
-    #                 for voter in self.votes_list:
-    #                     if voter[i].elected:
-    #                         voter[i+1]

@@ -24,6 +24,8 @@
 
 24.4.: 4 h, lisätty syötettyjen arvon kelvollisuuden tarkistaminen ja virheilmoituksia, muutettu hieman rakennetta
 
-26.4.: 2,5 h
+26.4.: 3,5 h, lisätty testejä ja file_reader-luokka
 
-Yhteensä: 37 h
+27.4.:  7 h, lisätty csv-tiedoston lukutoiminto ja oletusarvoiset ehdokas- ja äänestäjämäärät näkyviin kenttiin
+
+Yhteensä: 45 h

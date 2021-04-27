@@ -11,4 +11,8 @@
 /harjoitustyo/.coverage
 /harjoitustyo/src/ui/__pycache__/
 /harjoitustyo/src/services/__pycache__/
+__pycache__/
 
+harjoitustyo/src/services/__pycache__/votes.cpython-38.pyc
+harjoitustyo/src/ui/__pycache__/start_view.cpython-38.pyc
+harjoitustyo/src/ui/__pycache__/votes_frame.cpython-38.pyc
