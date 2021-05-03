@@ -8,8 +8,9 @@ Sovelluksella voi laskea siirtoäänivaalien tuloksen.
 * [Työaikakirjanpito](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/tyoaikakirjanpito.md)
 
 ## Asennus
-1. Asenna riippuvuudet komennolla poetry install
-2. Käynnistä sovellus komennolla poetry run invoke start
+1. Lataa sovellus [täältä](https://github.com/emigination/ot-harjoitustyo/releases/tag/viikko5)
+2. Asenna riippuvuudet komennolla poetry install
+3. Käynnistä sovellus komennolla poetry run invoke start
 
 ## Komentorivitoiminnot
 
