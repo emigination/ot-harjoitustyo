@@ -71,10 +71,12 @@ class Votes:
             self._votes.pop(i-number)
             number += 1
 
-    def save(self):
+    def save(self, name):
         self._remove_empty()
         database = Database()
-        database.save_table(self._votes, "safdsafas")
+        if database.save_table(self._votes, name):
+            return True
+        return False
 
     def stv_result(self):
         self._remove_empty()

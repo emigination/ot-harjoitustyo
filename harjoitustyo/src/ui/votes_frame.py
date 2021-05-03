@@ -1,5 +1,4 @@
 from tkinter import ttk, StringVar
-from services.votes import Votes
 from services.file_reader import FileReader
 
 
@@ -24,19 +23,20 @@ class VotesFrame:
         if voteslist is None:
             return None
         lengthlist = [len(vote) for vote in voteslist]
-        self.expand_table(max(lengthlist), len(voteslist))
+        candidates=max(lengthlist)
+        self.expand_table(candidates, len(voteslist))
         for row in range(self._voters):
             for column in range(len(voteslist[row])):
                 self._stringvarlist[row][column].set(voteslist[row][column])
-        return(max(lengthlist), len(voteslist))
+        return(candidates, len(voteslist))
 
-    def _insert_field(self, y_coordinate, x_cooridnate):
+    def _insert_field(self, y_coordinate, x_coordinate):
         if len(self._stringvarlist) < y_coordinate:
             self._stringvarlist.append([])
         stringvariable = StringVar(self._frame)
         self._stringvarlist[y_coordinate-1].append(stringvariable)
         ttk.Entry(master=self._frame, textvariable=stringvariable,
-                  width=10).grid(row=y_coordinate, column=x_cooridnate)
+                  width=10).grid(row=y_coordinate, column=x_coordinate)
 
     def expand_table(self, candidates, voters):
         candidates = int(candidates)-self.candidates
@@ -82,7 +82,6 @@ class VotesFrame:
 
         self.candidates += candidates
         self._voters += voters
-        return self
 
     def tablify(self):
         votes_list = []
@@ -92,7 +91,3 @@ class VotesFrame:
                 vote = self._frame.grid_slaves(row=i+1, column=j+1)[0].get()
                 votes_list[i].append(vote)
         return votes_list
-
-    # def count_click(self, seats):
-    #     votes = Votes(self.tablify(), seats, self._candidates)
-    #     return votes

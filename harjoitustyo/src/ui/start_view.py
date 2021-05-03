@@ -15,7 +15,8 @@ class StartView:
         self._vote_check_msg = StringVar(self._lowframe)
         self._candidates_number = StringVar(self._upframe, '3')
         self._voters_number = StringVar(self._upframe, '4')
-        self.seats_entry = ttk.Entry(master=self._lowframe)
+        self.seats_entry = ttk.Entry(master=self._lowframe, width=10)
+        self._savingframe = None
 
         title = ttk.Label(master=self._upframe, text="Vaalituloslaskuri\n")
         entry_instructions = ttk.Label(master=self._upframe,
@@ -29,9 +30,9 @@ class StartView:
         voters_label = ttk.Label(master=self._upframe,
                                  text="Äänestäjien määrä:")
         candidates_entry = ttk.Entry(
-            master=self._upframe, textvariable=self._candidates_number)
+            master=self._upframe, textvariable=self._candidates_number, width=10)
         voters_entry = ttk.Entry(master=self._upframe,
-                                 textvariable=self._voters_number)
+                                 textvariable=self._voters_number, width=10)
         ok_button = ttk.Button(master=self._upframe, text="Ok", command=lambda: self._ok_click(
             candidates_entry.get(), voters_entry.get()))
         error_label = ttk.Label(
@@ -77,8 +78,7 @@ class StartView:
             self._errormsg.set("Määrä ei ole positiivinen kokonaisluku")
         else:
             self._errormsg.set("")
-            self._votesframe = self._votesframe.expand_table(
-                candidates, voters)
+            self._votesframe.expand_table(candidates, voters)
 
     def _file_click(self):
         numbers = self._votesframe.read_file()
@@ -109,27 +109,31 @@ class StartView:
             self._show_results_view(votes)
 
     def _save_click(self):
-        savingframe = ttk.Frame(master=self._root)
-        name_instruction = ttk.Label(master=savingframe, text="Anna nimi äänitaulukolle:")
-        name_entry = ttk.Entry(master=savingframe)
-        save_named_button = ttk.Button(master=savingframe, text="Tallenna",
-                                       command=lambda: self._save_named(name_entry.get()))
-        cancel_button = ttk.Button(master=savingframe, text="Peruuta",
-                                   command=lambda: self._delete_frame(savingframe))
-        name_instruction.grid(pady=10)
-        name_entry.grid(column=1, row=0)
-        cancel_button.grid(pady=10)
-        save_named_button.grid(column=1, row=1)
-        savingframe.pack()
+        if not self._savingframe:
+            self._vote_check_msg.set("")
+            self._savingframe = ttk.Frame(master=self._root)
+            name_instruction = ttk.Label(
+                master=self._savingframe, text="Anna nimi äänitaulukolle:")
+            name_entry = ttk.Entry(master=self._savingframe)
+            save_named_button = ttk.Button(master=self._savingframe, text="Tallenna",
+                                        command=lambda: self._save_named(name_entry.get()))
+            cancel_button = ttk.Button(master=self._savingframe, text="Peruuta",
+                                    command=self._delete_savingframe)
+            name_instruction.grid(pady=10)
+            name_entry.grid(column=1, row=0)
+            cancel_button.grid(pady=10)
+            save_named_button.grid(column=1, row=1)
+            self._savingframe.pack()
 
-    def _delete_frame(self,frame):
-        frame.destroy()
+    def _delete_savingframe(self):
+        self._savingframe.destroy()
+        self._savingframe=None
 
     def _save_named(self, name):
         votes = self._create_votes_object()
-        # if votes:
-        #     saved = votes.save()
-        #     if saved:
-        #         self._vote_check_msg.set("Tallennus onnistui")
-        #     else:
-        #         self._vote_check_msg.set("Tallennus epäonnistui")
+        if votes:
+            if votes.save(name):
+                self._vote_check_msg.set("Tallennus onnistui")
+                self._delete_savingframe()
+            else:
+                self._vote_check_msg.set("Tallennus epäonnistui")
