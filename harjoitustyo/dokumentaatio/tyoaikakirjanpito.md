@@ -22,10 +22,14 @@
 
 21.4.: 1 h, testauksen kehittelyä
 
-24.4.: 4 h, lisätty syötettyjen arvon kelvollisuuden tarkistaminen ja virheilmoituksia, muutettu hieman rakennetta
+24.4.: 4 h, syötettyjen arvon kelvollisuuden tarkistamisen ja virheilmoitusten lisäämistä, rakenteen muutoksia
 
-26.4.: 3,5 h, lisätty testejä ja file_reader-luokka
+26.4.: 3,5 h, testien lisäystä ja file_reader-luokan luonti
 
-27.4.:  7 h, lisätty csv-tiedoston lukutoiminto ja oletusarvoiset ehdokas- ja äänestäjämäärät näkyviin kenttiin
+27.4.:  7 h, csv-tiedoston lukutoiminnon luonti ja oletusarvoisten ehdokas- ja äänestäjämäärien laittaminen näyville kenttiin
 
-Yhteensä: 45 h
+2.5.: 5 h, perehtymistä tietokannan käyttöön, tietokantatoiminnallisuuden työstämistä
+
+3.4.: 5 h
+
+Yhteensä: 55 h

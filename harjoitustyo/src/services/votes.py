@@ -1,6 +1,7 @@
 import pyrankvote
 from pyrankvote import Candidate, Ballot
 from pyrankvote.helpers import CompareMethodIfEqual
+from .database import Database
 
 
 class Votes:
@@ -69,6 +70,11 @@ class Votes:
         for i in empty:
             self._votes.pop(i-number)
             number += 1
+
+    def save(self):
+        self._remove_empty()
+        database = Database()
+        database.save_table(self._votes, "safdsafas")
 
     def stv_result(self):
         self._remove_empty()
