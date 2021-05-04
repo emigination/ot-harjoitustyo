@@ -26,10 +26,12 @@
 
 26.4.: 3,5 h, testien lisäystä ja file_reader-luokan luonti
 
-27.4.:  7 h, csv-tiedoston lukutoiminnon luonti ja oletusarvoisten ehdokas- ja äänestäjämäärien laittaminen näyville kenttiin
+27.4.: 7 h, csv-tiedoston lukutoiminnon luonti ja oletusarvoisten ehdokas- ja äänestäjämäärien laittaminen näyville kenttiin
 
 2.5.: 5 h, perehtymistä tietokannan käyttöön, tietokantatoiminnallisuuden työstämistä
 
-3.4.: 5 h
+3.4.: 7 h, ääntitaulukoiden tallentamistoiminnallisuuden lisäämistä
 
-Yhteensä: 55 h
+4.4. 2 h, ulkoasun säätämistä
+
+Yhteensä: 59 h

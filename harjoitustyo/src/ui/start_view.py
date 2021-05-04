@@ -8,8 +8,8 @@ class StartView:
     def __init__(self, root, show_results_view):
         self._root = root
         self._show_results_view = show_results_view
-        self._upframe = ttk.Frame(master=self._root)
-        self._lowframe = ttk.Frame(master=self._root)
+        self._upframe = ttk.Frame(master=self._root, padding=(100,20,100,0))
+        self._lowframe = ttk.Frame(master=self._root, padding=(0,0,0,20))
         self._votesframe = VotesFrame(self._root)
         self._errormsg = StringVar(self._upframe)
         self._vote_check_msg = StringVar(self._lowframe)
@@ -47,18 +47,18 @@ class StartView:
         save_button = ttk.Button(master=self._lowframe, text="Tallenna äänet...",
                                  command=self._save_click)
 
-        title.grid(row=0, column=1)
+        title.grid(row=0, column=1, columnspan=2)
 
         candidates_label.grid(row=2, column=1)
-        candidates_entry.grid(row=2, column=2)
+        candidates_entry.grid(row=2, column=2, sticky='W')
         voters_label.grid(row=3, column=1)
-        voters_entry.grid(row=3, column=2)
+        voters_entry.grid(row=3, column=2, sticky='W')
         error_label.grid(row=4, column=1)
-        ok_button.grid(row=4, column=2, pady=10)
+        ok_button.grid(row=4, column=2, pady=10, sticky='W')
 
         entry_instructions.grid(column=1, sticky="E")
         file_button.grid(row=5, column=2, sticky="W")
-        file_instructions.grid(row=6, columnspan=3, padx=20)
+        file_instructions.grid(row=6, columnspan=3)
 
         self._upframe.pack()
 
