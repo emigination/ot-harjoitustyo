@@ -1,28 +1,40 @@
 import sqlite3
 import os
 
-
 class Database:
     def __init__(self):
         dirname = os.path.dirname(__file__)
-        self.database = sqlite3.connect(os.path.join(
+        self._database = sqlite3.connect(os.path.join(
             dirname, "..", "..", "data", "database.sqlite"))
 
     def save_table(self, votetable, tablename):
         try:
-            self.database.execute("create table " + tablename +
+            self._database.execute("begin;")
+            self._database.execute("create table " + tablename +
                             "(id integer primary key, voter integer," + \
-                         " choiceno integer, candidate text)")
-            self.database.execute("begin")
+                         " choiceno integer, candidate text);")
             for (index, voter) in enumerate(votetable):
                 for (index2, choice) in enumerate(voter):
-                    self.database.execute(
+                    self._database.execute(
                         "INSERT INTO " + tablename + " (voter, choiceno, candidate)" + \
-                         "VALUES (?, ?, ?)", [index, index2, choice])
-            self.database.execute("commit")
+                         "VALUES (?, ?, ?);", [index, index2, choice])
+            self._database.execute("commit;")
             return True
         except:
             return False
 
     def fetch_tablenames(self):
-        return(self.database.execute("SELECT name FROM sqlite_master WHERE type='table';"))
+        tablenames = []
+        for tuple in self._database.execute("SELECT name FROM sqlite_master WHERE type='table';"):
+            tablenames.append(tuple[0])
+        return tablenames
+
+    def get_table(self, tablename):
+        table = []
+        for row in self._database.execute("SELECT voter, choiceno, candidate FROM " + tablename + ";"):
+            table.append(row)
+        voters = table[len(table)-1][0]+1
+        votestable = [[] for _ in range(voters)]
+        for row in table:
+            votestable[row[0]].append(row[2])
+        return votestable

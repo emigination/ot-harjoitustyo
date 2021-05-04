@@ -3,13 +3,16 @@ from services.file_reader import FileReader
 
 
 class VotesFrame:
-    def __init__(self, root):
+    def __init__(self, root, votestable):
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self.candidates = 0
         self._voters = 0
         self._stringvarlist = []
-        self.expand_table(3, 4)
+        if votestable:
+            self._show_table(votestable)
+        else:
+            self.expand_table(3, 4)
 
     def get_frame(self):
         return self._frame
@@ -22,6 +25,9 @@ class VotesFrame:
         voteslist = file_reader.read()
         if voteslist is None:
             return None
+        self._show_table(voteslist)
+
+    def _show_table(self, voteslist):
         lengthlist = [len(vote) for vote in voteslist]
         candidates=max(lengthlist)
         self.expand_table(candidates, len(voteslist))

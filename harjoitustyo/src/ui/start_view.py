@@ -5,12 +5,13 @@ from services.votes import Votes
 
 class StartView:
 
-    def __init__(self, root, show_results_view):
+    def __init__(self, root, show_results_view, show_saved_tables_view, votestable):
         self._root = root
         self._show_results_view = show_results_view
+        self._show_saved_tables_view = show_saved_tables_view
         self._upframe = ttk.Frame(master=self._root, padding=(100,20,100,0))
         self._lowframe = ttk.Frame(master=self._root, padding=(0,0,0,20))
-        self._votesframe = VotesFrame(self._root)
+        self._votesframe = VotesFrame(self._root, votestable)
         self._errormsg = StringVar(self._upframe)
         self._vote_check_msg = StringVar(self._lowframe)
         self._candidates_number = StringVar(self._upframe, '3')
@@ -46,6 +47,7 @@ class StartView:
                                   command=self._count_click)
         save_button = ttk.Button(master=self._lowframe, text="Tallenna äänet...",
                                  command=self._save_click)
+        view_saved_button = ttk.Button(master=self._lowframe, text="Tallennetut ääntitaulukot",command=self._show_saved_tables_view)
 
         title.grid(row=0, column=1, columnspan=2)
 
@@ -69,6 +71,7 @@ class StartView:
         vote_check_label.grid(row=2, column=1)
         count_button.grid(column=1, pady=10)
         save_button.grid(row=3, column=2, pady=10)
+        view_saved_button.grid(row=3, column=3, pady=10)
         self._lowframe.pack()
 
     def _ok_click(self, candidates, voters):
@@ -103,9 +106,6 @@ class StartView:
     def _count_click(self):
         votes = self._create_votes_object()
         if votes:
-            self._upframe.destroy()
-            self._votesframe.destroy_frame()
-            self._lowframe.destroy()
             self._show_results_view(votes)
 
     def _save_click(self):
@@ -137,3 +137,11 @@ class StartView:
                 self._delete_savingframe()
             else:
                 self._vote_check_msg.set("Tallennus epäonnistui")
+
+    def delete_view(self):
+        self._upframe.destroy()
+        self._votesframe.destroy_frame()
+        self._lowframe.destroy()
+        if self._savingframe:
+            self._savingframe.destroy()
+
