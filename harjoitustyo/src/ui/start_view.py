@@ -18,7 +18,7 @@ class StartView:
         self.seats_entry = ttk.Entry(master=self._lowframe, width=10)
         self._savingframe = None
 
-        title = ttk.Label(master=self._upframe, text="Vaalituloslaskuri\n")
+        title = ttk.Label(master=self._upframe, text="Siirtoäänivaalituloslaskuri\n")
         entry_instructions = ttk.Label(master=self._upframe,
                                        text="\nKirjaa ehdokkaiden numerot tai lue \n")
         file_button = ttk.Button(

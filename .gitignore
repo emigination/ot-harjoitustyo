@@ -5,5 +5,5 @@
 /harjoitustyo/.venv/
 /harjoitustyo/htmlcov
 /harjoitustyo/.coverage
-__pycache__
 /harjoitustyo/data/
+__pycache__
