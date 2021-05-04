@@ -5,7 +5,7 @@
 Lataa ensin projektin koodi sen uusimmasta releasesta.
 Suorita sitten kansiossa harjoitustyo komento "poetry install" riippuvuksien asentamiseksi. Sen jälkeen ohjelman voi käynnistää komennolla "poetry run invoke start".
 
-## Äänien syöttäminen
+## Äänten syöttäminen
 Anna ehdokkaiden ja äänestäjien määrä ja paina "Ok". Syötä siirtoäänivaaleissa annetut äänet kirjaamalla ruutuihin äänestettyjen ehdokkaiden numerot. Numeroiden tulee olla 1–ehdokkaiden määrä. Tyhjät äänet voi jättää tyhjäksi tai merkitä 0:na. Anna myös valittavien ehdokkaiden määrä.
 
 ## Tulokset

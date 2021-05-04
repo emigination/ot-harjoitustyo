@@ -5,12 +5,13 @@ Sovelluksella voi laskea siirtoäänivaalien tuloksen.
 ## Dokumentaatio
 * [Vaatimusmäärittely](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/vaatimusmaarittely.md)
 * [Arkkitehtuuri](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/arkkitehtuuri.md)
+* [Käyttöohje](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/kayttoohje.md)
 * [Työaikakirjanpito](https://github.com/emigination/ot-harjoitustyo/blob/main/harjoitustyo/dokumentaatio/tyoaikakirjanpito.md)
 
 ## Asennus
-1. Lataa sovellus [täältä](https://github.com/emigination/ot-harjoitustyo/releases/tag/viikko5)
-2. Asenna riippuvuudet komennolla poetry install
-3. Käynnistä sovellus komennolla poetry run invoke start
+1. Lataa sovellus [täältä](https://github.com/emigination/ot-harjoitustyo/releases/tag/viikko6)
+2. Asenna riippuvuudet kansiossa "harjoitustyo" komennolla poetry install
+3. Käynnistä sovellus samassa kansiossa komennolla poetry run invoke start
 
 ## Komentorivitoiminnot
 
