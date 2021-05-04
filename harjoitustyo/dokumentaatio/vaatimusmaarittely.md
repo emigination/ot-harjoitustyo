@@ -13,7 +13,7 @@ Sovelluksessa ei ole eri käyttäjärooleja.
 * Käyttäjä voi syöttää annetut (paperi)äänet äänestäjä kerrallaan ja valittavien henkilöiden lukumäärän -tehty
 * Käyttäjä voi myös tuoda äänet taulukkomuotoisesta tiedostosta -tehty
 * Sovellus kertoo valittavat henkilöt järjestyksessä -tehty
-* Äänet voi tallentaa paikallisesti
+* Äänet voi tallentaa paikallisesti -tehty
 
 ## Jatkokehitysajatukset ##
 

@@ -32,6 +32,6 @@
 
 3.4.: 7 h, ääntitaulukoiden tallentamistoiminnallisuuden lisäämistä
 
-4.4. 2 h, ulkoasun säätämistä
+4.4. 7 h, äänitaulukoiden poisto- ja viemismahdollisuuden luonti ja ulkoasun säätämistä
 
-Yhteensä: 59 h
+Yhteensä: 64 h

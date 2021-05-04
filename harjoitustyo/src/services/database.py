@@ -3,10 +3,10 @@ import os
 
 
 class Database:
-    def __init__(self):
+    def __init__(self, databasename="database.sqlite"):
         dirname = os.path.dirname(__file__)
         self._database = sqlite3.connect(os.path.join(
-            dirname, "..", "..", "data", "database.sqlite"))
+            dirname, "..", "..", "data", databasename))
 
     def save_table(self, votetable, tablename):
         try:
@@ -33,7 +33,7 @@ class Database:
     def get_table(self, tablename):
         table = []
         for row in self._database.execute("SELECT voter, choiceno, candidate FROM " +
-            tablename + ";"):
+              tablename + ";"):
             table.append(row)
         voters = table[len(table)-1][0]+1
         votestable = [[] for _ in range(voters)]
