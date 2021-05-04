@@ -91,7 +91,8 @@ class Votes:
         return self._errors
 
     def _remove_empty(self):
-        """Poistaa kokonaan tyhjät äänet, eli sellaiset, joissa äänestäjä on jättänyt kaikki kohdat tyhjiksi.
+        """Poistaa kokonaan tyhjät äänet, eli sellaiset, joissa äänestäjä on jättänyt
+            kaikki kohdat tyhjiksi.
         """
         empty = []
         for i in range(len(self._votes)):

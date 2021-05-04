@@ -3,16 +3,29 @@ import tkinter.filedialog
 
 
 class FileReader:
+    """Luokka, joka lukee csv-tiedostoja ja tekee niistä taulukkolistoja.
+
+    Attributes:
+        votes: Lista äänistä.
+    """
     def __init__(self):
+        """Luokan konstruktori.
+
+        """
         self.votes = None
 
     def read(self):
+        """Lukee csv-tiedoston ja luo siitä taulukkolistan.
+
+        Returns:
+            Äänitaulukko.
+        """
         file = tkinter.filedialog.askopenfile(
             mode="r", filetypes=(('csv files', '.csv'),))
         if file is None:
             return None
-        voteslist = []
+        self.votes = []
         votereader = csv.reader(file)
         for row in votereader:
-            voteslist.append(row)
-        return voteslist
+            self.votes.append(row)
+        return self.votes

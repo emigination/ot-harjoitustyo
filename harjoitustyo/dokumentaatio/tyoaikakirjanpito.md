@@ -32,6 +32,6 @@
 
 3.4.: 7 h, ääntitaulukoiden tallentamistoiminnallisuuden lisäämistä
 
-4.4. 7 h, äänitaulukoiden poisto- ja viemismahdollisuuden luonti ja ulkoasun säätämistä
+4.4. 9 h, äänitaulukoiden poisto- ja viemismahdollisuuden luonti, docstringin lisäämistä ja ulkoasun säätämistä
 
-Yhteensä: 64 h
+Yhteensä: 66 h

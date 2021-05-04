@@ -49,7 +49,7 @@ class StartView:
         save_button = ttk.Button(master=self._lowframe, text="Tallenna äänet...",
                                  command=self._save_click)
         view_saved_button = ttk.Button(
-            master=self._lowframe, text="Tallennetut ääntitaulukot", command=self._show_saved_tables_view)
+            master=self._lowframe, text="Tallennetut äänitaulukot", command=self._show_saved_tables_view)
 
         title.grid(row=0, column=1, columnspan=2)
 
