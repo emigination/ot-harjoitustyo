@@ -3,12 +3,32 @@ import os
 
 
 class Database:
+    """Luokka, joka vastaa tietokantatoiminnoista.
+
+    Attributes:
+        database: Tietokannan sijainti.
+    """
+
     def __init__(self, databasename="database.sqlite"):
+        """Luokan konstruktori, joka luo yhteyden tietokantaan.
+
+        Args:
+            Tietokannan nimi; jos sitä ei ole, oletusarvo on "database.sqlite".
+        """
         dirname = os.path.dirname(__file__)
         self._database = sqlite3.connect(os.path.join(
             dirname, "..", "..", "data", databasename))
 
     def save_table(self, votetable, tablename):
+        """Tallentaa äänitaulukon tietokantaan.
+
+        Args:
+            votetable: Äänet kaksiulotteisena taulokkona.
+            tablename: Tietokantataulun, johon äänet tallennetaan, nimi.
+
+        Returns:
+            True, jos tallentaminen onnistuu, muuten False.
+        """
         try:
             self._database.execute("begin;")
             self._database.execute("create table " + tablename +
@@ -25,15 +45,28 @@ class Database:
             return False
 
     def fetch_tablenames(self):
+        """Hakee tietokannassa olevien taulujen nimet.
+
+        Returns:
+            Lista taulujen nimistä.
+        """
         tablenames = []
         for name in self._database.execute("SELECT name FROM sqlite_master WHERE type='table';"):
             tablenames.append(name[0])
         return tablenames
 
     def get_table(self, tablename):
+        """Hakee äänitaulun tietokannasta.
+
+        Args:
+            tablename: haettavan taulun nimi.
+
+        Returns:
+            Äänet kaksiulotteisena taulukkona.
+        """
         table = []
         for row in self._database.execute("SELECT voter, choiceno, candidate FROM " +
-              tablename + ";"):
+                                          tablename + ";"):
             table.append(row)
         voters = table[len(table)-1][0]+1
         votestable = [[] for _ in range(voters)]
@@ -42,4 +75,9 @@ class Database:
         return votestable
 
     def remove_table(self, tablename):
+        """Poistaa taulun tietokannasta.
+
+        Args:
+            tablename: Poistettavan taulun nimi.
+        """
         self._database.execute("drop table " + tablename + ";")

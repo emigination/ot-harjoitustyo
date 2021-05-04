@@ -26,7 +26,7 @@ class SavedTablesView:
             self._frame, text="Vie csv-tiedostona", command=self._export_file)
         savinglabel = ttk.Label(self._frame, textvariable=self._savingtext)
         return_button = ttk.Button(
-            self._frame, text="Palaa", command=lambda: self._show_start_view(None))
+            self._frame, text="Palaa", command=self._show_start_view)
 
         title.grid(column=1, pady=10)
         txt.grid(pady=10)

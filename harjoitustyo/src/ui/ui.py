@@ -9,9 +9,9 @@ class UI:
         self._current_view = None
 
     def start(self):
-        self._show_start_view(None)
+        self._show_start_view()
 
-    def _show_start_view(self, votes):
+    def _show_start_view(self, votes=None):
         if self._current_view:
             self._current_view.delete_view()
         self._current_view = StartView(self._root, self._show_results_view, self._show_saved_tables_view, votes)

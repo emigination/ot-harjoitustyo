@@ -3,7 +3,23 @@ from services.file_reader import FileReader
 
 
 class VotesFrame:
-    def __init__(self, root, votestable):
+    """Luokka, joka vastaa aloitusnäkymässä näkyvästä framesta, johon äänet syötetään.
+
+    Attributes:
+        root: Olion juuri.
+        frame: Frame, johon äänet syötetään.
+        candidates = Ehdokkaiden lukumäärä.
+        voters = Äänestäjien lukumäärä.
+        stringvarlist = Lista stringvareista, joihin äänet tulevat.
+    """
+    def __init__(self, root, votestable=None):
+        """Luokan konstruktori, joka luo framen ja 3*4-kokoisen ruudukon, ellei sille anneta jotakin valmista taulukkoa.
+
+        Args:
+            root: Olion juuri.
+            votestable: Jos luokkaa käytetään olemassa olevan äänitaulukon näyttämiseen, se annetaan
+            kaksiulotteisena taulukkona. Muuten muuttujan arvoksi tulee None.
+        """
         self._root = root
         self._frame = ttk.Frame(master=self._root)
         self.candidates = 0
@@ -15,28 +31,51 @@ class VotesFrame:
             self.expand_table(3, 4)
 
     def get_frame(self):
+        """Palauttaa luokan framen.
+
+        Returns:
+            Frame, johon äänet syötetään ja jossa ne näytetään.
+        """
         return self._frame
 
     def destroy_frame(self):
+        """Poistaa framen.
+        """
         self._frame.destroy()
 
     def read_file(self):
+        """Näyttää csv-tiedostosta luetut äänet.
+
+        Returns:
+            Ehdokkaiden ja äänestäjien määrät; None jos tiedoston luku ei onnistunut.
+        """
         file_reader = FileReader()
         voteslist = file_reader.read()
         if voteslist is None:
             return None
         self._show_table(voteslist)
+        return(self.candidates, self._voters)
 
     def _show_table(self, voteslist):
+        """Näyttää tuodun tai tallennetun taulukon.
+
+        Args:
+            voteslist: äänitaulukko.
+        """
         lengthlist = [len(vote) for vote in voteslist]
         candidates=max(lengthlist)
         self.expand_table(candidates, len(voteslist))
         for row in range(self._voters):
             for column in range(len(voteslist[row])):
                 self._stringvarlist[row][column].set(voteslist[row][column])
-        return(candidates, len(voteslist))
 
     def _insert_field(self, y_coordinate, x_coordinate):
+        """Luo tekstikentän ja asettaa sen gridiin.
+
+        Args:
+            y_coordinate: Gridin rivi.
+            x_coordinate: Gridin sarake.
+        """
         if len(self._stringvarlist) < y_coordinate:
             self._stringvarlist.append([])
         stringvariable = StringVar(self._frame)
@@ -45,6 +84,12 @@ class VotesFrame:
                   width=10).grid(row=y_coordinate, column=x_coordinate)
 
     def expand_table(self, candidates, voters):
+        """Suurentaa tai pienentää taulukkoa, johon äänet syötetään.
+
+        Args:
+            candidates: Ehdokkaiden määrä.
+            voters: Äänestäjien määrä.
+        """
         candidates = int(candidates)-self.candidates
         voters = int(voters)-self._voters
         if candidates > 0 and voters > 0:
@@ -90,6 +135,11 @@ class VotesFrame:
         self._voters += voters
 
     def tablify(self):
+        """Luo Entry-oliohin syötetyistä äänistä taulukkolistan.
+
+        Returns:
+            Äänitaulukko.
+        """
         votes_list = []
         for i in range(self._voters):
             votes_list.append([])
