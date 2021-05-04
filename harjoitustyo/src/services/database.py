@@ -38,3 +38,6 @@ class Database:
         for row in table:
             votestable[row[0]].append(row[2])
         return votestable
+
+    def remove_table(self, tablename):
+        self._database.execute("drop table " + tablename + ";")

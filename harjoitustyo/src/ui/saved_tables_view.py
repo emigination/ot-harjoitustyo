@@ -33,7 +33,7 @@ class SavedTablesView:
         self._show_start_view(votestable)
 
     def _remove_table(self):
-        return
+        self._database.remove_table(self._tablename.get())
 
     def _export_file(self):
         return
