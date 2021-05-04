@@ -9,8 +9,8 @@ class StartView:
         self._root = root
         self._show_results_view = show_results_view
         self._show_saved_tables_view = show_saved_tables_view
-        self._upframe = ttk.Frame(master=self._root, padding=(100,20,100,0))
-        self._lowframe = ttk.Frame(master=self._root, padding=(0,0,0,20))
+        self._upframe = ttk.Frame(master=self._root, padding=(100, 20, 100, 0))
+        self._lowframe = ttk.Frame(master=self._root, padding=(0, 0, 0, 20))
         self._votesframe = VotesFrame(self._root, votestable)
         self._errormsg = StringVar(self._upframe)
         self._vote_check_msg = StringVar(self._lowframe)
@@ -19,7 +19,8 @@ class StartView:
         self.seats_entry = ttk.Entry(master=self._lowframe, width=10)
         self._savingframe = None
 
-        title = ttk.Label(master=self._upframe, text="Siirtoäänivaalituloslaskuri\n")
+        title = ttk.Label(master=self._upframe,
+                          text="Siirtoäänivaalituloslaskuri\n")
         entry_instructions = ttk.Label(master=self._upframe,
                                        text="\nKirjaa ehdokkaiden numerot tai lue \n")
         file_button = ttk.Button(
@@ -47,7 +48,8 @@ class StartView:
                                   command=self._count_click)
         save_button = ttk.Button(master=self._lowframe, text="Tallenna äänet...",
                                  command=self._save_click)
-        view_saved_button = ttk.Button(master=self._lowframe, text="Tallennetut ääntitaulukot",command=self._show_saved_tables_view)
+        view_saved_button = ttk.Button(
+            master=self._lowframe, text="Tallennetut ääntitaulukot", command=self._show_saved_tables_view)
 
         title.grid(row=0, column=1, columnspan=2)
 
@@ -116,20 +118,27 @@ class StartView:
                 master=self._savingframe, text="Anna nimi äänitaulukolle:")
             name_entry = ttk.Entry(master=self._savingframe)
             save_named_button = ttk.Button(master=self._savingframe, text="Tallenna",
-                                        command=lambda: self._save_named(name_entry.get()))
+                                           command=lambda: self._save_named(name_entry.get()))
+            name_rules = ttk.Label(
+                master=self._savingframe, text="Nimessä saa olla vain kirjaimia A-Ö ja numeroita")
             cancel_button = ttk.Button(master=self._savingframe, text="Peruuta",
-                                    command=self._delete_savingframe)
+                                       command=self._delete_savingframe)
             name_instruction.grid(pady=10)
             name_entry.grid(column=1, row=0)
+            name_rules.grid(column=1)
             cancel_button.grid(pady=10)
-            save_named_button.grid(column=1, row=1)
+            save_named_button.grid(column=1, row=2)
             self._savingframe.pack()
 
     def _delete_savingframe(self):
         self._savingframe.destroy()
-        self._savingframe=None
+        self._savingframe = None
 
     def _save_named(self, name):
+        self._vote_check_msg.set("")
+        if not name.isalnum():
+            self._vote_check_msg.set("Nimi ei ole kelvollinen")
+            return
         votes = self._create_votes_object()
         if votes:
             if votes.save(name):
@@ -144,4 +153,3 @@ class StartView:
         self._lowframe.destroy()
         if self._savingframe:
             self._savingframe.destroy()
-

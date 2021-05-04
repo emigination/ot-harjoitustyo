@@ -1,6 +1,7 @@
 import sqlite3
 import os
 
+
 class Database:
     def __init__(self):
         dirname = os.path.dirname(__file__)
@@ -11,13 +12,13 @@ class Database:
         try:
             self._database.execute("begin;")
             self._database.execute("create table " + tablename +
-                            "(id integer primary key, voter integer," + \
-                         " choiceno integer, candidate text);")
+                                   "(id integer primary key, voter integer," +
+                                   " choiceno integer, candidate text);")
             for (index, voter) in enumerate(votetable):
                 for (index2, choice) in enumerate(voter):
                     self._database.execute(
-                        "INSERT INTO " + tablename + " (voter, choiceno, candidate)" + \
-                         "VALUES (?, ?, ?);", [index, index2, choice])
+                        "INSERT INTO " + tablename + " (voter, choiceno, candidate)" +
+                        "VALUES (?, ?, ?);", [index, index2, choice])
             self._database.execute("commit;")
             return True
         except:
@@ -25,13 +26,14 @@ class Database:
 
     def fetch_tablenames(self):
         tablenames = []
-        for tuple in self._database.execute("SELECT name FROM sqlite_master WHERE type='table';"):
-            tablenames.append(tuple[0])
+        for name in self._database.execute("SELECT name FROM sqlite_master WHERE type='table';"):
+            tablenames.append(name[0])
         return tablenames
 
     def get_table(self, tablename):
         table = []
-        for row in self._database.execute("SELECT voter, choiceno, candidate FROM " + tablename + ";"):
+        for row in self._database.execute("SELECT voter, choiceno, candidate FROM " +
+            tablename + ";"):
             table.append(row)
         voters = table[len(table)-1][0]+1
         votestable = [[] for _ in range(voters)]
