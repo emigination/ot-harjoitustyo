@@ -6,4 +6,6 @@
 /harjoitustyo/htmlcov
 /harjoitustyo/.coverage
 /harjoitustyo/data/
+/harjoitustyo/src/kokeilut/
+/harjoitustyo/.vscode
 __pycache__

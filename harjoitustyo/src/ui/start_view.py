@@ -1,17 +1,19 @@
 from tkinter import ttk, StringVar
 from .votes_frame import VotesFrame
 from services.votes import Votes
-
+from .scrollableframe import ScrollableFrame
 
 class StartView:
 
     def __init__(self, root, show_results_view, show_saved_tables_view, votestable):
         self._root = root
+        self._scrframe = ScrollableFrame(self._root)
+        self._mainframe = self._scrframe.scrollable_frame
         self._show_results_view = show_results_view
         self._show_saved_tables_view = show_saved_tables_view
-        self._upframe = ttk.Frame(master=self._root, padding=(100, 20, 100, 0))
-        self._lowframe = ttk.Frame(master=self._root, padding=(0, 0, 0, 20))
-        self._votesframe = VotesFrame(self._root, votestable)
+        self._upframe = ttk.Frame(master=self._mainframe, padding=(50,0,50,0))
+        self._lowframe = ttk.Frame(master=self._mainframe)
+        self._votesframe = VotesFrame(self._mainframe, votestable)
         self._errormsg = StringVar(self._upframe)
         self._vote_check_msg = StringVar(self._lowframe)
         self._candidates_number = StringVar(self._upframe, '3')
@@ -64,9 +66,9 @@ class StartView:
         file_button.grid(row=5, column=2, sticky="W")
         file_instructions.grid(row=6, columnspan=3)
 
-        self._upframe.pack()
+        self._upframe.pack(fill="both", expand=True)
 
-        self._votesframe.get_frame().pack()
+        self._votesframe.get_frame().pack(fill="both", expand=True)
 
         seats_label.grid(row=1, column=1, padx=10, pady=10)
         self.seats_entry.grid(row=1, column=2)
@@ -74,7 +76,8 @@ class StartView:
         count_button.grid(column=1, pady=10)
         save_button.grid(row=3, column=2, pady=10)
         view_saved_button.grid(row=3, column=3, pady=10)
-        self._lowframe.pack()
+        self._lowframe.pack(fill="both", expand=True)
+        self._scrframe.pack(fill="both", expand=True)
 
     def _ok_click(self, candidates, voters):
         self._candidates_number.set(candidates)
@@ -113,7 +116,7 @@ class StartView:
     def _save_click(self):
         if not self._savingframe:
             self._vote_check_msg.set("")
-            self._savingframe = ttk.Frame(master=self._root)
+            self._savingframe = ttk.Frame(master=self._mainframe)
             name_instruction = ttk.Label(
                 master=self._savingframe, text="Anna nimi äänitaulukolle:")
             name_entry = ttk.Entry(master=self._savingframe)
@@ -148,8 +151,6 @@ class StartView:
                 self._vote_check_msg.set("Tallennus epäonnistui")
 
     def delete_view(self):
-        self._upframe.destroy()
-        self._votesframe.destroy_frame()
-        self._lowframe.destroy()
+        self._scrframe.destroy()
         if self._savingframe:
             self._savingframe.destroy()

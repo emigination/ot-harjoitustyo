@@ -81,7 +81,7 @@ class VotesFrame:
         stringvariable = StringVar(self._frame)
         self._stringvarlist[y_coordinate-1].append(stringvariable)
         ttk.Entry(master=self._frame, textvariable=stringvariable,
-                  width=10).grid(row=y_coordinate, column=x_coordinate)
+                  width=5).grid(row=y_coordinate, column=x_coordinate)
 
     def expand_table(self, candidates, voters):
         """Suurentaa tai pienentää taulukkoa, johon äänet syötetään.
@@ -94,8 +94,12 @@ class VotesFrame:
         voters = int(voters)-self._voters
         if candidates > 0 and voters > 0:
             for i in range(candidates):
+                if i+self.candidates==0:
+                    columntitle=f"{i+1+self.candidates}.valinta"
+                else:
+                    columntitle=f"{i+1+self.candidates}. "
                 txt = ttk.Label(master=self._frame,
-                                text=f"{i+1+self.candidates}. valinta")
+                                text=columntitle)
                 txt.grid(row=0, column=i+self.candidates+1)
             for i in range(voters):
                 txt = ttk.Label(master=self._frame,
@@ -105,8 +109,12 @@ class VotesFrame:
                     self._insert_field(i+1+self._voters, j+1+self.candidates)
         if candidates > 0:
             for i in range(candidates):
+                if i+self.candidates==0:
+                    columntitle=f"{i+1+self.candidates}.valinta"
+                else:
+                    columntitle=f"{i+1+self.candidates}. "
                 txt = ttk.Label(master=self._frame,
-                                text=f"{i+1+self.candidates}. valinta")
+                                text=columntitle)
                 txt.grid(row=0, column=i+self.candidates+1)
                 for j in range(self._voters):
                     self._insert_field(j+1, i+1+self.candidates)

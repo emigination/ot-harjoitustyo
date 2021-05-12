@@ -30,8 +30,12 @@
 
 2.5.: 5 h, perehtymistä tietokannan käyttöön, tietokantatoiminnallisuuden työstämistä
 
-3.4.: 7 h, ääntitaulukoiden tallentamistoiminnallisuuden lisäämistä
+3.5.: 7 h, ääntitaulukoiden tallentamistoiminnallisuuden lisäämistä
 
-4.4. 9 h, äänitaulukoiden poisto- ja viemismahdollisuuden luonti, docstringin lisäämistä ja ulkoasun säätämistä
+4.5. 9 h, äänitaulukoiden poisto- ja viemismahdollisuuden luonti, docstringin lisäämistä ja ulkoasun säätämistä
 
-Yhteensä: 66 h
+5.5. 4 h, vieritettävän näkymän kehittämisen yrittämistä
+
+12.5. 2 h, toteutettu näkymän vieritysmahdollisuus
+
+Yhteensä: 72 h
