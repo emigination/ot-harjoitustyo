@@ -38,6 +38,6 @@
 
 12.5. 2 h, näkymän vieritysmahdollisuuden toetutusta
 
-14.5. 1 h, vieritettävän näkymän parantelua
+14.5. 2 h, vieritettävän näkymän parantelua, testien tekemistä
 
-Yhteensä: 73 h
+Yhteensä: 74 h

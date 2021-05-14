@@ -40,6 +40,9 @@ class VerticalScrolledFrame(Frame):
             if interior.winfo_reqwidth() != canvas.winfo_width():
                 # update the canvas's width to fit the inner frame
                 canvas.config(width=interior.winfo_reqwidth())
+            if interior.winfo_reqheight() != canvas.winfo_height():
+                # update the canvas's width to fit the inner frame
+                canvas.config(height=interior.winfo_reqheight())
         interior.bind('<Configure>', _configure_interior)
 
         def _configure_canvas(event):

@@ -8,6 +8,7 @@ class FileReader:
     Attributes:
         votes: Lista äänistä.
     """
+
     def __init__(self):
         """Luokan konstruktori.
 
@@ -24,6 +25,9 @@ class FileReader:
             mode="r", filetypes=(('csv files', '.csv'),))
         if file is None:
             return None
+        return self._tablify_file(file)
+
+    def _tablify_file(self, file):
         self.votes = []
         votereader = csv.reader(file)
         for row in votereader:
