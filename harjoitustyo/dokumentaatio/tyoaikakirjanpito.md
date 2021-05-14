@@ -36,6 +36,8 @@
 
 5.5. 4 h, vieritettävän näkymän kehittämisen yrittämistä
 
-12.5. 2 h, toteutettu näkymän vieritysmahdollisuus
+12.5. 2 h, näkymän vieritysmahdollisuuden toetutusta
 
-Yhteensä: 72 h
+14.5. 1 h, vieritettävän näkymän parantelua
+
+Yhteensä: 73 h
