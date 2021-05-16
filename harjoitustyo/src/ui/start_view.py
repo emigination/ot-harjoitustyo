@@ -22,6 +22,9 @@ class StartView:
         self.seats_entry = ttk.Entry(master=self._lowframe, width=10)
         self._savingframe = None
 
+        self._initialize()
+
+    def _initialize(self):
         title = ttk.Label(master=self._upframe,
                           text="Siirtoäänivaalituloslaskuri\n")
         entry_instructions = ttk.Label(master=self._upframe,
@@ -91,7 +94,7 @@ class StartView:
 
     def _file_click(self):
         numbers = self._votesframe.read_file()
-        if numbers is None:
+        if not numbers:
             return
         self._candidates_number.set(numbers[0])
         self._voters_number.set(numbers[1])

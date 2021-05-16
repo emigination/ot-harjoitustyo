@@ -26,17 +26,17 @@ class FileWriter:
         Returns:
             True, jos tiedoston tallennus onnistui, muuten False.
         """
-        tabletowrite = self.database.get_table(tablename)
         file = tkinter.filedialog.asksaveasfilename(
             filetypes=(('csv files', '.csv'),))
         if file in ('', None):
             return False
-        return self._write_csv(tabletowrite, file)
+        return self._write_csv(tablename, file)
 
 
-    def _write_csv(self, table, file):
+    def _write_csv(self, tablename, file):
+        tabletowrite = self.database.get_table(tablename)
         with open(file, mode='w', newline='') as csvfile:
             votewriter = csv.writer(csvfile)
-            for row in table:
+            for row in tabletowrite:
                 votewriter.writerow(row)
         return True
