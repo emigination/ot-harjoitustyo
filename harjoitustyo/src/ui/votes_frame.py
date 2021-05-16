@@ -62,8 +62,7 @@ class VotesFrame:
         Args:
             voteslist: äänitaulukko.
         """
-        lengthlist = [len(vote) for vote in voteslist]
-        candidates=max(lengthlist)
+        candidates = max([len(vote) for vote in voteslist])
         self.expand_table(candidates, len(voteslist))
         for row in range(self._voters):
             for column in range(len(voteslist[row])):

@@ -40,4 +40,6 @@
 
 14.5. 2 h, vieritettävän näkymän parantelua, testien tekemistä
 
+15.5. 1 h
+
 Yhteensä: 74 h

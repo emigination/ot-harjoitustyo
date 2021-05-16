@@ -1,13 +1,14 @@
 from tkinter import ttk, StringVar
 from .votes_frame import VotesFrame
 from services.votes import Votes
-from .scrollable_frame import VerticalScrolledFrame
+from .scrollable_frame import ScrollableFrame
+
 
 class StartView:
 
     def __init__(self, root, show_results_view, show_saved_tables_view, votestable):
         self._root = root
-        self._scrframe = VerticalScrolledFrame(self._root)
+        self._scrframe = ScrollableFrame(self._root)
         self._mainframe = self._scrframe.interior
         self._show_results_view = show_results_view
         self._show_saved_tables_view = show_saved_tables_view
