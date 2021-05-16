@@ -6,13 +6,22 @@ from .scrollable_frame import ScrollableFrame
 
 class StartView:
 
-    def __init__(self, root, show_results_view, show_saved_tables_view, votestable):
+    def __init__(self, root, show_results_view, show_saved_tables_view, votestable=None):
+        """Luokan konstruktori.
+
+        Args:
+            root: Näkymän vanhempi.
+            show_results_view ([type]): Funktio tulosnäkymän näyttämiseksi.
+            show_saved_tables_view ([type]): Funktio tallennettujen taulukoiden näyttämiseksi.
+            votestable: Äänitaulukko.
+        """
         self._root = root
         self._scrframe = ScrollableFrame(self._root)
         self._mainframe = self._scrframe.interior
         self._show_results_view = show_results_view
         self._show_saved_tables_view = show_saved_tables_view
-        self._upframe = ttk.Frame(master=self._mainframe, padding=(50,0,50,0))
+        self._upframe = ttk.Frame(
+            master=self._mainframe, padding=(50, 0, 50, 0))
         self._lowframe = ttk.Frame(master=self._mainframe)
         self._votesframe = VotesFrame(self._mainframe, votestable)
         self._errormsg = StringVar(self._upframe)
@@ -53,7 +62,7 @@ class StartView:
         count_button = ttk.Button(master=self._lowframe, text="Laske",
                                   command=self._count_click)
         save_button = ttk.Button(master=self._lowframe, text="Tallenna äänet...",
-                                 command=self._save_click)
+                                 command=self._show_savingframe)
         view_saved_button = ttk.Button(
             master=self._lowframe, text="Tallennetut äänitaulukot", command=self._show_saved_tables_view)
 
@@ -117,7 +126,7 @@ class StartView:
         if votes:
             self._show_results_view(votes)
 
-    def _save_click(self):
+    def _show_savingframe(self):
         if not self._savingframe:
             self._vote_check_msg.set("")
             self._savingframe = ttk.Frame(master=self._mainframe)
@@ -155,6 +164,8 @@ class StartView:
                 self._vote_check_msg.set("Tallennus epäonnistui")
 
     def delete_view(self):
+        """Poistaa näkymän.
+        """
         self._scrframe.destroy()
         if self._savingframe:
             self._savingframe.destroy()

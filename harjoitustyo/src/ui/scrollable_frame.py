@@ -1,6 +1,6 @@
 #https://gist.github.com/bhaskar-nair2/94b2d4dd511a1cd38ecde9c9481c4b28 used as reference
 
-from tkinter import Scrollbar, Frame, Canvas, RIGHT, VERTICAL, FALSE, TRUE, LEFT, BOTH, NW, X, Y, HORIZONTAL, BOTTOM
+from tkinter import Scrollbar, Frame, Canvas, RIGHT, VERTICAL, TRUE, BOTH, NW, X, Y, HORIZONTAL, BOTTOM
 
 class ScrollableFrame(Frame):
 
