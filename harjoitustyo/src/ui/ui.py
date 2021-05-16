@@ -1,7 +1,6 @@
 from .start_view import StartView
 from .results_view import ResultsView
 from .saved_tables_view import SavedTablesView
-# from kokeilut.kokeilustartview import StartView
 
 class UI:
     def __init__(self, root):

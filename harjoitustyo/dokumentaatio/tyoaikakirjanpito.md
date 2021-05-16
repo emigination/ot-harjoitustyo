@@ -40,6 +40,6 @@
 
 14.5. 2 h, vieritettävän näkymän parantelua, testien tekemistä
 
-15.5. 1 h
+16.5. 6 h, dokumentaation ja testauksen täydennysta ja päivitystä, vieritysmahdollisuus myös vaakasuuntaan
 
-Yhteensä: 74 h
+Yhteensä: 80 h

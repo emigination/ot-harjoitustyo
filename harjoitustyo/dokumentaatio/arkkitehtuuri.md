@@ -50,6 +50,6 @@ Käyttäjä voi valita tallenetun taulukon samasta pudostusvalikosta kuin tauluk
 
 ## Tiedon pysyväistallennus
 
-Database-luokan avulla äänitaulukoita voi tallentaa SQLite-tietokantaan. Tietokannan nimi on vakio, mutta käyttäjä päättää kunkin taulukon nimen. Käyttäjä voi myös poistaa taulukoita.
+Database-luokan avulla äänitaulukoita voi tallentaa SQLite-tietokantaan. Tietokantatiedoston oletusnimi on database.sqlite, mutta sen voi muuttaa .env-tiedostosa. Käyttäjä päättää kunkin taulukon nimen tallentaessa. Käyttäjä voi myös poistaa taulukoita.
 
 FileWriter-luokalla tietokantaan tallennettuja äänitaulukoita voi tallentaa CSV-tiedostoina. Äänet tallennetaan samantyyppiesti kuin miten ne syötetään; yhdelle riville tallenetaan yhden äänestäjän äänet. Numerot erotetaan toisistaan pilkulla.

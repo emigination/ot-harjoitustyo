@@ -1,5 +1,6 @@
 import sqlite3
 import os
+from dotenv import load_dotenv
 
 
 class Database:
@@ -9,15 +10,21 @@ class Database:
         database: Tietokannan sijainti.
     """
 
-    def __init__(self, databasename="database.sqlite"):
+    def __init__(self, database_name=None):
         """Luokan konstruktori, joka luo yhteyden tietokantaan.
 
         Args:
-            Tietokannan nimi; jos sitä ei ole, oletusarvo on "database.sqlite".
+            Tietokannan nimi. Jos sitä ei ole, käytetään oletustietokantaa.
         """
         dirname = os.path.dirname(__file__)
+        if not database_name:
+            try:
+                load_dotenv(dotenv_path=os.path.join(dirname, "..", "..", ".env"))
+            except FileNotFoundError:
+                pass
+            database_name = os.getenv('DATABASE_NAME') or 'database.sqlite'
         self._database = sqlite3.connect(os.path.join(
-            dirname, "..", "..", "data", databasename))
+            dirname, "..", "..", "data", database_name))
 
     def save_table(self, votetable, tablename):
         """Tallentaa äänitaulukon tietokantaan.

@@ -117,7 +117,6 @@ class Votes:
         Returns:
             True, jos tallennus onnistuu, muuten False.
         """
-        self._remove_empty()
         database = Database()
         if database.save_table(self._votes, name):
             return True
